@@ -1,0 +1,52 @@
+// 		addi $a0 $zero 5	# x = 5
+// 		jal g_x				# calc x^4 + x^3 + x^2 + x + 1
+// 		addi $s0 $v0 0		# $s0 = g(x)
+// 		addi $a0 $zero 7	# y = 7
+// 		jal h_y				# calc y^2 + y
+// 		addi $s1 $v0 0		# $s1 = h(y)
+// 		sub $s2 $s0 $s1		# $s2 = f(x, y)
+// 	loop:
+// 		j loop 				# end
+// 	g_x:
+// 		addi $t0 $zero 1	# partial sum $t0 = 1
+// 		addi $t1 $a0 0		# $t1 = x
+// 		add $t0 $t0 $t1		# $t0 = 1 + x
+// 		mul $t1 $t1 $a0		# $t1 = x^2
+// 		add $t0 $t0 $t1		# $t0 = 1 + x + x^2
+// 		mul $t1 $t1 $a0		# $t1 = x^3
+// 		add $t0 $t0 $t1		# $t0 = 1 + x + x^2 + x^3
+// 		mul $t1 $t1 $a0		# $t1 = x^4
+// 		add $t0 $t0 $t1		# $t0 = 1 + x + x^2 + x^3 + x^4
+// 		addi $v0 $t0 0		# $v0 = $t0
+// 		jr $ra				# return g(x)
+// 	h_y:
+// 		add $t0 $zero $a0	# partial sum $t0 = y
+// 		mul $t1 $a0 $a0		# $t1 = y^2
+// 		add $t0 $t0 $t1		# $t0 = y + y^2
+// 		addi $v0 $t0 0		# $v0 = $t0
+// 		jr $ra				# return h(y)
+
+8'd0:	Instruction <= 32'h20040005;
+8'd1:	Instruction <= 32'h0c100008;
+8'd2:	Instruction <= 32'h20500000;
+8'd3:	Instruction <= 32'h20040007;
+8'd4:	Instruction <= 32'h0c100013;
+8'd5:	Instruction <= 32'h20510000;
+8'd6:	Instruction <= 32'h02119022;
+8'd7:	Instruction <= 32'h08100007;
+8'd8:	Instruction <= 32'h20080001;
+8'd9:	Instruction <= 32'h20890000;
+8'd10:	Instruction <= 32'h01094020;
+8'd11:	Instruction <= 32'h71244802;
+8'd12:	Instruction <= 32'h01094020;
+8'd13:	Instruction <= 32'h71244802;
+8'd14:	Instruction <= 32'h01094020;
+8'd15:	Instruction <= 32'h71244802;
+8'd16:	Instruction <= 32'h01094020;
+8'd17:	Instruction <= 32'h21020000;
+8'd18:	Instruction <= 32'h03e00008;
+8'd19:	Instruction <= 32'h00044020;
+8'd20:	Instruction <= 32'h70844802;
+8'd21:	Instruction <= 32'h01094020;
+8'd22:	Instruction <= 32'h21020000;
+8'd23:	Instruction <= 32'h03e00008;
